@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xml-fragment xmlns:ser="http://www.bea.com/wli/sb/services" xmlns:tran="http://www.bea.com/wli/sb/transports" xmlns:env="http://www.bea.com/wli/config/env" xmlns:http="http://www.bea.com/wli/sb/transports/http" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:con="http://www.bea.com/wli/sb/typesystem/config" xmlns:con1="http://www.bea.com/wli/sb/pipeline/config" xmlns:con2="http://www.bea.com/wli/sb/stages/config" xmlns:con3="http://www.bea.com/wli/sb/stages/transform/config">
+  <ser:coreEntry isProxy="true" isEnabled="true" isTracingEnabled="false">
+    <ser:binding type="SOAP" isSoap12="false" xsi:type="con4:SoapBindingType" xmlns:con4="http://www.bea.com/wli/sb/services/bindings/config">
+      <con4:wsdl ref="BCO_PE_AZ_Contrato_TarjetatransaccionalAsociar-v1_0_IMPL/Resources/WSDL/OSB_Contrato_Tarjetatransaccional_Asociar_IMPL"/>
+      <con4:port>
+        <con4:name>ContratoTarjetatransaccionalPortIMPL</con4:name>
+        <con4:namespace>http://mdwcorp.falabella.com/OSB/wsdl/BCO/PE/Az/contrato/tarjetatransaccional/asociar-v1.0/IMPL</con4:namespace>
+      </con4:port>
+      <con4:selector type="SOAP body"/>
+      <con4:WSI-compliant>false</con4:WSI-compliant>
+    </ser:binding>
+    <ser:monitoring isEnabled="false">
+      <ser:aggregationInterval>1</ser:aggregationInterval>
+      <ser:pipelineMonitoringLevel>Pipeline</ser:pipelineMonitoringLevel>
+    </ser:monitoring>
+    <ser:reporting>false</ser:reporting>
+    <ser:logging isEnabled="false">
+      <ser:logLevel>debug</ser:logLevel>
+    </ser:logging>
+    <ser:sla-alerting isEnabled="false">
+      <ser:alertLevel>normal</ser:alertLevel>
+    </ser:sla-alerting>
+    <ser:pipeline-alerting isEnabled="false">
+      <ser:alertLevel>normal</ser:alertLevel>
+    </ser:pipeline-alerting>
+    <ser:ws-policy>
+      <ser:binding-mode>wsdl-policy-attachments</ser:binding-mode>
+    </ser:ws-policy>
+  </ser:coreEntry>
+  <ser:endpointConfig>
+    <tran:provider-id>local</tran:provider-id>
+    <tran:inbound>true</tran:inbound>
+    <tran:inbound-properties/>
+    <tran:all-headers>true</tran:all-headers>
+  </ser:endpointConfig>
+  <ser:router errorHandler="_onErrorHandler-2653048836575532155--5c6ea059.138402d0f7c.-7fd1">
+    <con1:pipeline type="request" name="ProxyImplementacion_request">
+      <con1:stage name="validateRequestImpl">
+        <con1:comment>Se valida el mensaje request del proxy.</con1:comment>
+        <con5:context xmlns:con="http://www.bea.com/wli/sb/pipeline/config" xmlns:con4="http://www.bea.com/wli/sb/typesystem/config" xmlns:con1="http://www.bea.com/wli/sb/stages/logging/config" xmlns:con5="http://www.bea.com/wli/sb/pipeline/config">
+          <con2:varNsDecl namespace="http://ws.tarcre.bf.pe/" prefix="ws1"/>
+          <con2:varNsDecl namespace="http://mdwcorp.falabella.com/schema/S004/BFP/PE/solicitudcredito/consulta/Req-v1.0" prefix="req"/>
+          <con2:varNsDecl namespace="http://mdwcorp.falabella.com/schema/BCO/PE/empresa/buscarempresas/Req-v2013.10" prefix="req1"/>
+          <con2:varNsDecl namespace="http://webservice.sat.mediosdepago.tecnocom.com" prefix="web"/>
+          <con2:varNsDecl namespace="http://az7satpivote.wsbeans.iseries/xsd" prefix="xsd1"/>
+          <con2:varNsDecl namespace="http://az7satapecuenta.wsbeans.iseries/xsd" prefix="xsd2"/>
+          <con2:varNsDecl namespace="http://az7apecuenta.wsbeans.iseries/xsd" prefix="xsd3"/>
+          <con2:varNsDecl namespace="http://mdwcorp.falabella.com/OSB/schema/BCO/PE/Az/contrato/tarjetatransaccional/asociar/Req-v2015.02" prefix="req2"/>
+        </con5:context>
+        <con5:actions xmlns:con="http://www.bea.com/wli/sb/pipeline/config" xmlns:con4="http://www.bea.com/wli/sb/typesystem/config" xmlns:con1="http://www.bea.com/wli/sb/stages/logging/config" xmlns:con5="http://www.bea.com/wli/sb/pipeline/config">
+          <con3:validate>
+            <con2:id>_ActionId-8501847697149677962-4bac8af4.13840541def.-7faa</con2:id>
+            <con3:wsdl ref="BCO_PE_AZ_Contrato_TarjetatransaccionalAsociar-v1_0_IMPL/Resources/WSDL/OSB_Contrato_Tarjetatransaccional_Asociar_IMPL"/>
+            <con3:schemaElement xmlns:ws="http://ws.tarcre.bf.pe/" xmlns:req="http://mdwcorp.falabella.com/schema/S004/BFP/PE/solicitudcredito/consulta/Req-v1.0" xmlns:req1="http://mdwcorp.falabella.com/schema/BCO/PE/empresa/buscarempresas/Req-v2013.10" xmlns:web="http://webservice.sat.mediosdepago.tecnocom.com" xmlns:xsd="http://az7satpivote.wsbeans.iseries/xsd" xmlns:xsd1="http://az7satapecuenta.wsbeans.iseries/xsd" xmlns:xsd2="http://az7apecuenta.wsbeans.iseries/xsd" xmlns:req3="http://mdwcorp.falabella.com/OSB/schema/BCO/PE/Az/contrato/tarjetatransaccional/asociar/Req-v2015.02">req3:ContratoTarjetatransaccionalReqParam</con3:schemaElement>
+            <con3:varName>body</con3:varName>
+            <con3:location>
+              <con2:xpathText>./req2:ContratoTarjetatransaccionalReqParam</con2:xpathText>
+            </con3:location>
+          </con3:validate>
+        </con5:actions>
+      </con1:stage>
+      <con1:stage name="setRequestBusiness">
+        <con1:comment>Se construye el mensaje para enviar al service provider y se asigna en la variable requestBusiness. 
+
+Si es requerido usar otras vaiables se deben asignar aqui y siempre usar el sufijo correspondiente (Business).</con1:comment>
+        <con5:context xmlns:con="http://www.bea.com/wli/sb/pipeline/config" xmlns:con4="http://www.bea.com/wli/sb/typesystem/config" xmlns:con1="http://www.bea.com/wli/sb/stages/logging/config" xmlns:con5="http://www.bea.com/wli/sb/pipeline/config">
+          <con2:varNsDecl namespace="http://ws.tarcre.bf.pe/" prefix="ws1"/>
+          <con2:varNsDecl namespace="http://mdwcorp.falabella.com/schema/S004/BFP/PE/solicitudcredito/consulta/Req-v1.0" prefix="req"/>
+          <con2:varNsDecl namespace="http://mdwcorp.falabella.com/schema/BCO/PE/empresa/buscarempresas/Req-v2013.10" prefix="req1"/>
+          <con2:varNsDecl namespace="http://webservice.sat.mediosdepago.tecnocom.com" prefix="web"/>
+          <con2:varNsDecl namespace="http://az7satpivote.wsbeans.iseries/xsd" prefix="xsd1"/>
+          <con2:varNsDecl namespace="http://az7satapecuenta.wsbeans.iseries/xsd" prefix="xsd2"/>
+          <con2:varNsDecl namespace="http://az7apecuenta.wsbeans.iseries/xsd" prefix="xsd3"/>
+          <con2:varNsDecl namespace="http://mdwcorp.falabella.com/OSB/schema/BCO/PE/Az/contrato/tarjetatransaccional/asociar/Req-v2015.02" prefix="req2"/>
+        </con5:context>
+        <con5:actions xmlns:con="http://www.bea.com/wli/sb/pipeline/config" xmlns:con4="http://www.bea.com/wli/sb/typesystem/config" xmlns:con1="http://www.bea.com/wli/sb/stages/logging/config" xmlns:con5="http://www.bea.com/wli/sb/pipeline/config">
+          <con3:javaCallout varName="responseJava">
+            <con2:id>_ActionId-619853500939274343--af38919.14f48624442.-7fcb</con2:id>
+            <con3:archive ref="BCO_PE_AZ_Contrato_TarjetatransaccionalAsociar-v1_0_IMPL/Resources/Jar/parseTlv"/>
+            <con3:className>parsetlv.ParseTlv</con3:className>
+            <con3:method>public static java.lang.String createCoding(java.lang.String)</con3:method>
+            <con3:expr>
+              <con2:xqueryText>xs:string(fn-bea:serialize($body/req2:ContratoTarjetatransaccionalReqParam/req2:solicitudAsociacionTarjeta/req2:datosAdicionales))</con2:xqueryText>
+            </con3:expr>
+          </con3:javaCallout>
+          <con3:assign varName="requestBusiness">
+            <con2:id>_ActionId-2653048836575532155--5c6ea059.138402d0f7c.-7f58</con2:id>
+            <con3:expr>
+              <con2:xqueryTransform>
+                <con2:resource ref="BCO_PE_AZ_Contrato_TarjetatransaccionalAsociar-v1_0_IMPL/Resources/XQuery/xq_IN_PX_PE_AsociarContratoTarjetaComp_to_PX_PE_AZCARD_AsociarContratoTarjetaServiceImpl"/>
+                <con2:param name="ContratoTarjetatransaccionalReqParam1">
+                  <con2:path>$body/req2:ContratoTarjetatransaccionalReqParam</con2:path>
+                </con2:param>
+                <con2:param name="datosAdocionales">
+                  <con2:path>xs:string($responseJava)</con2:path>
+                </con2:param>
+              </con2:xqueryTransform>
+            </con3:expr>
+          </con3:assign>
+        </con5:actions>
+      </con1:stage>
+      <con1:stage name="callOut_BS_PE_AZ_ServicioImpl">
+        <con1:comment>Se realiza el callout al business correspondiente. Se debe reemplazar BS_PE_SAT_ServicioGenericoImpl por el nombre del business.
+
+La varible para almacenar la respuesta es responseBusiness.</con1:comment>
+        <con5:context xmlns:con="http://www.bea.com/wli/sb/pipeline/config" xmlns:con4="http://www.bea.com/wli/sb/typesystem/config" xmlns:con1="http://www.bea.com/wli/sb/stages/logging/config" xmlns:con5="http://www.bea.com/wli/sb/pipeline/config">
+          <con2:varNsDecl namespace="http://ws.tarcre.bf.pe/" prefix="ws1"/>
+          <con2:varNsDecl namespace="http://mdwcorp.falabella.com/schema/S004/BFP/PE/solicitudcredito/consulta/Resp-v1.0" prefix="resp"/>
+        </con5:context>
+        <con5:actions xmlns:con="http://www.bea.com/wli/sb/pipeline/config" xmlns:con4="http://www.bea.com/wli/sb/typesystem/config" xmlns:con1="http://www.bea.com/wli/sb/stages/logging/config" xmlns:con5="http://www.bea.com/wli/sb/pipeline/config">
+          <con3:wsCallout>
+            <con2:comment>RequestBusiness
+
+ResponseBusiness</con2:comment>
+            <con2:id>_ActionId-8501847697149677962-4bac8af4.13840541def.-7fd9</con2:id>
+            <con3:service xsi:type="ref:BusinessServiceRef" ref="BCO_PE_AZ_Contrato_TarjetatransaccionalAsociar-v1_0_IMPL/BusinessServices/BS_PE_Contrato_TarjetatransaccionalAsociarService" xmlns:ref="http://www.bea.com/wli/sb/reference"/>
+            <con3:operation>az0140acta</con3:operation>
+            <con3:request>
+              <con3:body>$requestBusiness</con3:body>
+            </con3:request>
+            <con3:response>
+              <con3:body>responseBusiness</con3:body>
+            </con3:response>
+            <con3:requestTransform>
+              <con1:log>
+                <con2:id>_ActionId-8501847697149677962-4bac8af4.13840541def.-7fd7</con2:id>
+                <con1:logLevel>debug</con1:logLevel>
+                <con1:expr>
+                  <con2:xqueryText>$requestBusiness</con2:xqueryText>
+                </con1:expr>
+                <con1:message>Request [PX_PE_SAT_ServicioGenericoImpl] --></con1:message>
+              </con1:log>
+            </con3:requestTransform>
+            <con3:responseTransform>
+              <con1:log>
+                <con2:id>_ActionId-8501847697149677962-4bac8af4.13840541def.-7fd3</con2:id>
+                <con1:logLevel>debug</con1:logLevel>
+                <con1:expr>
+                  <con2:xqueryText>$responseBusiness</con2:xqueryText>
+                </con1:expr>
+                <con1:message>Request [PX_PE_SAT_ServicioGenericoImpl] --></con1:message>
+              </con1:log>
+              <con3:validate>
+                <con2:id>_ActionId-8501847697149677962-4bac8af4.13840541def.-7fd1</con2:id>
+                <con3:wsdl ref="BCO_PE_AZ_Contrato_TarjetatransaccionalAsociar-v1_0_IMPL/Resources/WSDL/AZ7APECUENTA"/>
+                <con3:schemaElement xmlns:ws="http://ws.tarcre.bf.pe/" xmlns:resp="http://mdwcorp.falabella.com/schema/S004/BFP/PE/solicitudcredito/consulta/Resp-v1.0" xmlns:resp1="http://mdwcorp.falabella.com/schema/BCO/PE/empresa/buscarempresas/Resp-v2013.10" xmlns:web="http://webservice.sat.mediosdepago.tecnocom.com" xmlns:xsd="http://az7satpivote.wsbeans.iseries/xsd" xmlns:xsd1="http://az7satapecuenta.wsbeans.iseries/xsd" xmlns:xsd2="http://az7apecuenta.wsbeans.iseries/xsd">xsd2:az0140actaResponse</con3:schemaElement>
+                <con3:varName>responseBusiness</con3:varName>
+                <con3:location>
+                  <con2:xpathText>.</con2:xpathText>
+                </con3:location>
+              </con3:validate>
+            </con3:responseTransform>
+          </con3:wsCallout>
+        </con5:actions>
+      </con1:stage>
+    </con1:pipeline>
+    <con1:pipeline type="response" name="ProxyImplementacion_response">
+      <con1:stage name="setResponseImpl">
+        <con1:comment>Se construye el mensaje de respuesta.</con1:comment>
+        <con5:context xmlns:con4="http://www.bea.com/wli/sb/stages/logging/config" xmlns:con="http://www.bea.com/wli/sb/pipeline/config" xmlns:con1="http://www.bea.com/wli/sb/stages/logging/config" xmlns:con5="http://www.bea.com/wli/sb/pipeline/config">
+          <con2:varNsDecl namespace="http://ws.tarcre.bf.pe/" prefix="ws1"/>
+          <con2:varNsDecl namespace="http://az7satpivote.wsbeans.iseries/xsd" prefix="xsd1"/>
+        </con5:context>
+        <con5:actions xmlns:con4="http://www.bea.com/wli/sb/stages/logging/config" xmlns:con="http://www.bea.com/wli/sb/pipeline/config" xmlns:con1="http://www.bea.com/wli/sb/stages/logging/config" xmlns:con5="http://www.bea.com/wli/sb/pipeline/config">
+          <con3:assign varName="responseImpl">
+            <con2:id>_ActionId-7499718844012880015--1f537fbd.13a0f9aeb78.-7fd6</con2:id>
+            <con3:expr>
+              <con2:xqueryTransform>
+                <con2:resource ref="BCO_PE_AZ_Contrato_TarjetatransaccionalAsociar-v1_0_IMPL/Resources/XQuery/xq_OUT_PX_PE_AZCARD_AsociarContratoTarjetaBusinessServices_to_PX_PE_AsociarContratoTarjetaImpl"/>
+                <con2:param name="az0140actaResponse1">
+                  <con2:path>$responseBusiness</con2:path>
+                </con2:param>
+              </con2:xqueryTransform>
+            </con3:expr>
+          </con3:assign>
+          <con3:assign varName="responseImpl">
+            <con2:id>_ActionId-7499718844012880015--1f537fbd.13a0f9aeb78.-7fb6</con2:id>
+            <con3:expr>
+              <con2:xqueryText>element soap-env:Body{
+$responseImpl
+}</con2:xqueryText>
+            </con3:expr>
+          </con3:assign>
+          <con3:assign varName="body">
+            <con2:id>_ActionId-3941594941068785264-626f7f.14a5031de14.-7f7a</con2:id>
+            <con3:expr>
+              <con2:xqueryText>$responseImpl</con2:xqueryText>
+            </con3:expr>
+          </con3:assign>
+        </con5:actions>
+      </con1:stage>
+      <con1:stage name="cleanImplementacion">
+        <con1:comment>Se eliminan las variables generadas, se debe revisar que esten todas las variables usadas en el proxy.</con1:comment>
+        <con1:context/>
+        <con1:actions>
+          <con3:delete varName="requestBusiness">
+            <con2:id>_ActionId-1024111431407011298-442f9c2d.139c2c96549.-7bf3</con2:id>
+          </con3:delete>
+          <con3:delete varName="responseBusiness">
+            <con2:id>_ActionId-1024111431407011298-442f9c2d.139c2c96549.-7bdf</con2:id>
+          </con3:delete>
+          <con3:delete varName="responseImpl">
+            <con2:id>_ActionId-7499718844012880015--1f537fbd.13a0f9aeb78.-7e80</con2:id>
+          </con3:delete>
+        </con1:actions>
+      </con1:stage>
+    </con1:pipeline>
+    <con1:pipeline type="error" name="_onErrorHandler-2653048836575532155--5c6ea059.138402d0f7c.-7fd1">
+      <con1:stage name="logErrorTecnicoImpl">
+        <con1:comment>Logea el mensaje de error en log a disco.</con1:comment>
+        <con5:context xmlns:con4="http://www.bea.com/wli/sb/stages/logging/config" xmlns:con="http://www.bea.com/wli/sb/pipeline/config" xmlns:con1="http://www.bea.com/wli/sb/stages/logging/config" xmlns:con5="http://www.bea.com/wli/sb/pipeline/config"/>
+        <con5:actions xmlns:con4="http://www.bea.com/wli/sb/stages/logging/config" xmlns:con="http://www.bea.com/wli/sb/pipeline/config" xmlns:con1="http://www.bea.com/wli/sb/stages/logging/config" xmlns:con5="http://www.bea.com/wli/sb/pipeline/config">
+          <con1:log xmlns:jca="http://www.bea.com/wli/sb/transports/jca">
+            <con2:id>_ActionId-2653048836575532155--5c6ea059.138402d0f7c.-7f39</con2:id>
+            <con1:logLevel>error</con1:logLevel>
+            <con1:expr>
+              <con5:xqueryText xmlns:con5="http://www.bea.com/wli/sb/stages/config">$fault</con5:xqueryText>
+            </con1:expr>
+            <con1:message>Error en [PX_PE_SAT_ServicioGenericoImpl]--></con1:message>
+          </con1:log>
+        </con5:actions>
+      </con1:stage>
+      <con1:stage name="setResponseErrorImpl">
+        <con1:comment>Construye mensaje de error tecnico y responde con error.</con1:comment>
+        <con1:context/>
+        <con1:actions>
+          <con1:replace varName="body" contents-only="true" xmlns:con1="http://www.bea.com/wli/sb/stages/transform/config" xmlns:con="http://www.bea.com/wli/sb/pipeline/config" xmlns:con4="http://www.bea.com/wli/sb/stages/logging/config">
+            <con2:id>_ActionId-2653048836575532155--5c6ea059.138402d0f7c.-7f35</con2:id>
+            <con1:location>
+              <con2:xpathText>.</con2:xpathText>
+            </con1:location>
+            <con1:expr>
+              <con2:xqueryText>$fault</con2:xqueryText>
+            </con1:expr>
+          </con1:replace>
+          <con2:reply isError="true" xmlns:con1="http://www.bea.com/wli/sb/stages/transform/config" xmlns:con="http://www.bea.com/wli/sb/pipeline/config" xmlns:con4="http://www.bea.com/wli/sb/stages/logging/config">
+            <con2:id>_ActionId-2653048836575532155--5c6ea059.138402d0f7c.-7f33</con2:id>
+          </con2:reply>
+        </con1:actions>
+      </con1:stage>
+      <con1:stage name="cleanErrorImplementation">
+        <con1:context/>
+        <con1:actions>
+          <con3:delete varName="responseBusiness">
+            <con2:id>_ActionId-2648130896068276064--630e8151.14a4fe7d2ea.-7eff</con2:id>
+          </con3:delete>
+          <con3:delete varName="requestBusiness">
+            <con2:id>_ActionId-2648130896068276064--630e8151.14a4fe7d2ea.-7f53</con2:id>
+          </con3:delete>
+          <con3:delete varName="errorResponseBusiness">
+            <con2:id>_ActionId-2648130896068276064--630e8151.14a4fe7d2ea.-7fa7</con2:id>
+          </con3:delete>
+        </con1:actions>
+      </con1:stage>
+    </con1:pipeline>
+    <con1:flow>
+      <con1:pipeline-node name="ProxyImplementacion">
+        <con1:request>ProxyImplementacion_request</con1:request>
+        <con1:response>ProxyImplementacion_response</con1:response>
+      </con1:pipeline-node>
+    </con1:flow>
+  </ser:router>
+</xml-fragment>

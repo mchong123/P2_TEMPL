@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?><wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:ns="http://az7apecuenta.wsbeans.iseries/xsd" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:tns="http://az7apecuenta.wsbeans.iseries" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://org.apache.axis2/xsd" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://az7apecuenta.wsbeans.iseries">
+    <wsdl:documentation>AZ7APECUENTA</wsdl:documentation>
+    <wsdl:types>
+        <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://az7apecuenta.wsbeans.iseries/xsd">
+            <xs:element name="az0140acta_XML">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="args0" type="ns:AZ0140ACTAInput"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:complexType name="AZ0140ACTAInput">
+                <xs:sequence>
+                    <xs:element name="CUENTA" type="xs:string"/>
+                    <xs:element name="DATOSADICIONAL" type="xs:string"/>
+                    <xs:element name="FECHATRANSAC" type="xs:string"/>
+                    <xs:element name="HORATRANSAC" type="xs:string"/>
+                    <xs:element name="ORIGEN" type="xs:string"/>
+                    <xs:element name="PVV" type="xs:string"/>
+                    <xs:element name="TIPOMENSAJE" type="xs:string"/>
+                    <xs:element name="TIPOSERVICIO" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:element name="az0140acta_XMLResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="return" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="az0140acta">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="args0" type="ns:AZ0140ACTAInput"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="az0140actaResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="return" type="ns:AZ0140ACTAResult"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:complexType name="AZ0140ACTAResult">
+                <xs:sequence>
+                    <xs:element name="AUTORIZACION" type="xs:string"/>
+                    <xs:element name="CODIGORTA" type="xs:string"/>
+                    <xs:element name="CUENTA" type="xs:string"/>
+                    <xs:element name="DATOSADICIONAL" type="xs:string"/>
+                    <xs:element name="FECHATRANSAC" type="xs:string"/>
+                    <xs:element name="HORATRANSAC" type="xs:string"/>
+                    <xs:element name="ORIGEN" type="xs:string"/>
+                    <xs:element name="PVV" type="xs:string"/>
+                    <xs:element name="TIPOMENSAJE" type="xs:string"/>
+                    <xs:element name="TIPOSERVICIO" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+        </xs:schema>
+    </wsdl:types>
+    <wsdl:message name="az0140actaRequest">
+        <wsdl:part name="parameters" element="ns:az0140acta"/>
+    </wsdl:message>
+    <wsdl:message name="az0140actaResponse">
+        <wsdl:part name="parameters" element="ns:az0140actaResponse"/>
+    </wsdl:message>
+    <wsdl:message name="az0140acta_XMLRequest">
+        <wsdl:part name="parameters" element="ns:az0140acta_XML"/>
+    </wsdl:message>
+    <wsdl:message name="az0140acta_XMLResponse">
+        <wsdl:part name="parameters" element="ns:az0140acta_XMLResponse"/>
+    </wsdl:message>
+    <wsdl:portType name="AZ7APECUENTAPortType">
+        <wsdl:operation name="az0140acta">
+            <wsdl:input message="tns:az0140actaRequest" wsaw:Action="urn:az0140acta"/>
+            <wsdl:output message="tns:az0140actaResponse" wsaw:Action="urn:az0140actaResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="az0140acta_XML">
+            <wsdl:input message="tns:az0140acta_XMLRequest" wsaw:Action="urn:az0140acta_XML"/>
+            <wsdl:output message="tns:az0140acta_XMLResponse" wsaw:Action="urn:az0140acta_XMLResponse"/>
+        </wsdl:operation>
+ </wsdl:portType>
+    <wsdl:binding name="AZ7APECUENTASoap11Binding" type="tns:AZ7APECUENTAPortType">
+        <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+        <wsdl:operation name="az0140acta">
+            <soap:operation soapAction="urn:az0140acta" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="az0140acta_XML">
+            <soap:operation soapAction="urn:az0140acta_XML" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="AZ7APECUENTA">
+        <wsdl:port name="AZ7APECUENTAHttpSoap11Endpoint" binding="tns:AZ7APECUENTASoap11Binding">
+            <soap:address location="http://10.140.0.217:10000/web/services/AZ7APECUENTA.AZ7APECUENTAHttpSoap11Endpoint/"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

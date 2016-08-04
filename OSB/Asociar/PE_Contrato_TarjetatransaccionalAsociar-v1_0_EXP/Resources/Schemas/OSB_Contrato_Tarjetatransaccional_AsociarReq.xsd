@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns="http://mdwcorp.falabella.com/OSB/schema/BCO/PE/contrato/tarjetatransaccional/asociar/Req-v2015.02"
+	targetNamespace="http://mdwcorp.falabella.com/OSB/schema/BCO/PE/contrato/tarjetatransaccional/asociar/Req-v2015.02"
+	elementFormDefault="qualified">
+	<xsd:complexType name="SolicitudAsociacionTarjeta_TYPE">
+		<xsd:sequence>
+			<xsd:element name="tipoMensaje" type="xsd:string"
+				minOccurs="1" maxOccurs="1" />
+			<xsd:element name="origen" type="xsd:string" minOccurs="1"
+				maxOccurs="1" />
+			<xsd:element name="fechaHoraTransmision" type="xsd:date"
+				minOccurs="1" maxOccurs="1" />
+			<xsd:element name="horaTransaccion" type="xsd:string"
+				minOccurs="1" maxOccurs="1" />
+			<xsd:element name="numeroContratoTarjeta" type="xsd:string"
+				minOccurs="1" maxOccurs="1" />
+			<xsd:element name="pvv" type="xsd:string" minOccurs="1"
+				maxOccurs="1" />
+			<xsd:element name="datosAdicionales" type="DatosAdicionales_TYPE"
+				minOccurs="1" maxOccurs="1" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="DatosAdicionales_TYPE">
+		<xsd:sequence>
+			<xsd:element name="tipoDocumentoTitular" type="TipoDocumentoTitular_TYPE"
+				minOccurs="1" maxOccurs="1" />
+			<xsd:element name="identificadorPrincipalAdicional" type="IdentificadorPrincipalAdicional_TYPE"
+				minOccurs="1" maxOccurs="1" />
+			<xsd:element name="codigoClienteTitularContrato" type="xsd:string"
+				minOccurs="1" maxOccurs="1" />
+			<xsd:element name="nombreCliente" type="xsd:string"
+				minOccurs="1" maxOccurs="1" />
+			<xsd:element name="codigoCupo" type="xsd:string"
+				minOccurs="1" maxOccurs="1" />
+			<xsd:element name="tipoDocumentoTarjeta" type="xsd:integer"
+				minOccurs="1" maxOccurs="1" />
+			<xsd:element name="codigoClienteTarjeta" type="xsd:string"
+				minOccurs="1" maxOccurs="1" />
+			<xsd:element name="numeroContrato" type="xsd:string"
+				minOccurs="1" maxOccurs="1" />
+			<xsd:element name="codigoSituacionCuenta" type="CodigoSituacionCuenta_TYPE"
+				minOccurs="1" maxOccurs="1" />
+			<xsd:element name="codigoMoneda" type="xsd:integer"
+				minOccurs="1" maxOccurs="1" />
+			<xsd:element name="pivote" type="Pivote_TYPE" minOccurs="1"
+				maxOccurs="1" />
+			<xsd:element name="indicadorEmpleado" type="IndicadorEmpleado_TYPE"
+				minOccurs="1" maxOccurs="1" />
+			<xsd:element name="tipoSublineaDisponibleCompras" type="xsd:string"
+				minOccurs="1" maxOccurs="1" />
+			<xsd:element name="disponibleCompras" type="xsd:integer"
+				minOccurs="1" maxOccurs="1" />
+			<xsd:element name="tipoSublineaDisponibleAvance" type="xsd:string"
+				minOccurs="1" maxOccurs="1" />
+			<xsd:element name="disponibleAvance" type="xsd:float"
+				minOccurs="1" maxOccurs="1" />
+			<xsd:element name="tipoSublineaDisponibleSuperAvance"
+				type="xsd:string" minOccurs="1" maxOccurs="1" />
+			<xsd:element name="disponibleSuperAvance" type="xsd:integer"
+				minOccurs="1" maxOccurs="1" />
+			<xsd:element name="oficinaApertura" type="xsd:string"
+				minOccurs="1" maxOccurs="1" />
+			<xsd:element name="fechaExpiracionTarjeta" type="xsd:string"
+				minOccurs="1" maxOccurs="1" />
+			<xsd:element name="indicadorAvance" type="xsd:string"
+				minOccurs="1" maxOccurs="1" />
+			<xsd:element name="indicadorSuperAvance" type="xsd:string"
+				minOccurs="1" maxOccurs="1" />
+
+			<xsd:element name="tipoCredito" type="xsd:string"
+				minOccurs="0" maxOccurs="1" />
+			<xsd:element name="altaoReemision" type="xsd:string"
+				minOccurs="0" maxOccurs="1" />
+			<xsd:element name="motivoReemision" type="xsd:string"
+				minOccurs="0" maxOccurs="1" />
+			<xsd:element name="panAnterior" type="xsd:string"
+				minOccurs="0" maxOccurs="1" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:simpleType name="TipoDocumentoTitular_TYPE">
+		<xsd:restriction base="xsd:integer">
+			<xsd:enumeration value="1" />
+			<xsd:enumeration value="2" />
+			<xsd:enumeration value="3" />
+			<xsd:enumeration value="4" />
+			<xsd:enumeration value="5" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="IdentificadorPrincipalAdicional_TYPE">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="P" />
+			<xsd:enumeration value="A" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="CodigoSituacionCuenta_TYPE">
+		<xsd:restriction base="xsd:integer">
+			<xsd:enumeration value="0" />
+			<xsd:enumeration value="3" />
+			<xsd:enumeration value="5" />
+			<xsd:enumeration value="6" />
+			<xsd:enumeration value="7" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="Pivote_TYPE">
+		<xsd:restriction base="xsd:integer">
+			<xsd:enumeration value="1" />
+			<xsd:enumeration value="2" />
+			<xsd:enumeration value="3" />
+			<xsd:enumeration value="4" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="IndicadorEmpleado_TYPE">
+		<xsd:restriction base="xsd:integer">
+			<xsd:enumeration value="0" />
+			<xsd:enumeration value="1" />
+		</xsd:restriction>
+	</xsd:simpleType>
+
+
+
+	<xsd:complexType name="ContratoTarjetatransaccionalReqParam_TYPE">
+		<xsd:sequence>
+			<xsd:element name="solicitudAsociacionTarjeta" minOccurs="1"
+				maxOccurs="1" type="SolicitudAsociacionTarjeta_TYPE">
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:element name="ContratoTarjetatransaccionalReqParam" type="ContratoTarjetatransaccionalReqParam_TYPE" />
+</xsd:schema>
+
+
+

@@ -1,0 +1,56 @@
+<definitions targetNamespace="http://mdwcorp.falabella.com/OSB/wsdl/BCO/PE/contrato/tarjetatransaccional/asociar-v1.0" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://mdwcorp.falabella.com/OSB/wsdl/BCO/PE/contrato/tarjetatransaccional/asociar-v1.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:reqns="http://mdwcorp.falabella.com/OSB/schema/BCO/PE/contrato/tarjetatransaccional/asociar/Req-v2015.02" xmlns:respns="http://mdwcorp.falabella.com/OSB/schema/BCO/PE/contrato/tarjetatransaccional/asociar/Resp-v2015.02" xmlns:fault="http://schemas.xmlsoap.org/soap/envelope/" xmlns:cs="http://mdwcorp.falabella.com/common/schema/clientservice">
+	<types>
+		<xsd:schema>
+			<xsd:import schemaLocation="../Schemas/OSB_Contrato_Tarjetatransaccional_AsociarReq.xsd" namespace="http://mdwcorp.falabella.com/OSB/schema/BCO/PE/contrato/tarjetatransaccional/asociar/Req-v2015.02"/>
+		</xsd:schema>
+		<xsd:schema>
+			<xsd:import schemaLocation="../Schemas/OSB_Contrato_Tarjetatransaccional_AsociarResp.xsd" namespace="http://mdwcorp.falabella.com/OSB/schema/BCO/PE/contrato/tarjetatransaccional/asociar/Resp-v2015.02"/>
+		</xsd:schema>
+		<xsd:schema>
+			<xsd:import schemaLocation="../../../UT_BCO_PE_EsquemasComunes_v1.0/Resources/Schemas/MdwCorp_Common_soapFault.xsd" namespace="http://schemas.xmlsoap.org/soap/envelope/"/>
+		</xsd:schema>
+		<xsd:schema>
+			<xsd:import schemaLocation="../../../UT_BCO_PE_EsquemasComunes_v1.0/Resources/Schemas/MdwCorp_Common_clientService.xsd" namespace="http://mdwcorp.falabella.com/common/schema/clientservice"/>
+		</xsd:schema>
+	</types>
+	<message name="ContratoTarjetatransaccionalMsgReq">
+		<part name="ContratoTarjetatransaccionalReqParam" element="reqns:ContratoTarjetatransaccionalReqParam"/>
+	</message>
+	<message name="ContratoTarjetatransaccionalMsgResp">
+		<part name="ContratoTarjetatransaccionalRespParam" element="respns:ContratoTarjetatransaccionalRespParam"/>
+	</message>
+	<message name="FaultMsg">
+		<part name="FaultMsg" element="fault:Fault"/>
+	</message>
+	<message name="ClientMsg">
+		<part name="ClientService" element="cs:ClientService"/>
+	</message>
+	<portType name="ContratoTarjetatransaccionalPt">
+		<operation name="ContratoTarjetatransaccionalOp">
+			<input message="tns:ContratoTarjetatransaccionalMsgReq"/>
+			<output message="tns:ContratoTarjetatransaccionalMsgResp"/>
+			<fault message="tns:FaultMsg" name="fault"/>
+		</operation>
+	</portType>
+	<binding name="ContratoTarjetatransaccionalBinding" type="tns:ContratoTarjetatransaccionalPt">
+		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+		<operation name="ContratoTarjetatransaccionalOp">
+			<soap:operation style="document" soapAction="http://mdwcorp.falabella.com/OSB/wsdl/BCO/PE/contrato/tarjetatransaccional/asociar-v1.0/Op"/>
+			<input>
+				<soap:body use="literal" parts="ContratoTarjetatransaccionalReqParam"/>
+				<soap:header message="tns:ClientMsg" use="literal" part="ClientService"/>
+			</input>
+			<output>
+				<soap:body use="literal" parts="ContratoTarjetatransaccionalRespParam"/>
+			</output>
+			<fault name="fault">
+				<soap:fault name="fault" use="literal"/>
+			</fault>
+		</operation>
+	</binding>
+	<service name="ContratoTarjetatransaccionalService">
+		<port name="ContratoTarjetatransaccionalPort" binding="tns:ContratoTarjetatransaccionalBinding">
+			<soap:address location="http://localhost:8011/BCO/PE/Contrato/v1_0/asociar"/>
+		</port>
+	</service>
+</definitions>

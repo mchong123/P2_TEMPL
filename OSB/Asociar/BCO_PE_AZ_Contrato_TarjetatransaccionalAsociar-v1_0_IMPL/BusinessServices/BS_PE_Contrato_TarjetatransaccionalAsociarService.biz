@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xml-fragment xmlns:ser="http://www.bea.com/wli/sb/services" xmlns:tran="http://www.bea.com/wli/sb/transports" xmlns:http="http://www.bea.com/wli/sb/transports/http" xmlns:env="http://www.bea.com/wli/config/env" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <ser:coreEntry isProxy="false" isEnabled="true" isTracingEnabled="false">
+    <ser:binding type="SOAP" isSoap12="false" xsi:type="con:SoapBindingType" xmlns:con="http://www.bea.com/wli/sb/services/bindings/config">
+      <con:wsdl ref="BCO_PE_AZ_Contrato_TarjetatransaccionalAsociar-v1_0_IMPL/Resources/WSDL/AZ7APECUENTA"/>
+      <con:port>
+        <con:name>AZ7APECUENTAHttpSoap11Endpoint</con:name>
+        <con:namespace>http://az7apecuenta.wsbeans.iseries</con:namespace>
+      </con:port>
+      <con:WSI-compliant>false</con:WSI-compliant>
+    </ser:binding>
+    <ser:monitoring isEnabled="true">
+      <ser:aggregationInterval>1</ser:aggregationInterval>
+    </ser:monitoring>
+    <ser:sla-alerting isEnabled="true">
+      <ser:alertLevel>normal</ser:alertLevel>
+    </ser:sla-alerting>
+    <ser:ws-policy>
+      <ser:binding-mode>wsdl-policy-attachments</ser:binding-mode>
+    </ser:ws-policy>
+    <ser:throttling enabled="false">
+      <ser:capacity>0</ser:capacity>
+      <ser:maxQueueLength>0</ser:maxQueueLength>
+      <ser:timeToLive>0</ser:timeToLive>
+    </ser:throttling>
+    <ser:messageTracing enabled="false"/>
+    <ser:pageAttachments isEnabled="false"/>
+    <ser:result-caching isEnabled="false" isSupported="false"/>
+  </ser:coreEntry>
+  <ser:endpointConfig>
+    <tran:provider-id>http</tran:provider-id>
+    <tran:inbound>false</tran:inbound>
+    <tran:URI>
+      <env:value>http://10.140.0.217:10000/web/services/AZ7APECUENTA</env:value>
+    </tran:URI>
+    <tran:outbound-properties>
+      <tran:load-balancing-algorithm>round-robin</tran:load-balancing-algorithm>
+      <tran:retry-count>0</tran:retry-count>
+      <tran:retry-interval>0</tran:retry-interval>
+      <tran:retry-application-errors>true</tran:retry-application-errors>
+    </tran:outbound-properties>
+    <tran:provider-specific>
+      <http:outbound-properties>
+        <http:request-method>POST</http:request-method>
+        <http:timeout>20</http:timeout>
+        <http:connection-timeout>3</http:connection-timeout>
+        <http:follow-redirects>false</http:follow-redirects>
+        <http:chunked-streaming-mode>true</http:chunked-streaming-mode>
+      </http:outbound-properties>
+    </tran:provider-specific>
+  </ser:endpointConfig>
+</xml-fragment>
